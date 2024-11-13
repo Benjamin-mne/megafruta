@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;     /* Centra el contenido verticalmente */
+    min-height: 100vh;       /* Ocupa todo el alto de la pantalla */
+    background-color: #f0f0f0; /* Fondo suave */
+}
+
+canvas {
+    width: 400px; /* Establece un ancho fijo de 400px */
+    height: 700px; /* Establece una altura fija de 700px */
+    outline: 1px solid #000; /* Borde visible */
+}
