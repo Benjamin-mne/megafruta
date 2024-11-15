@@ -19,6 +19,7 @@ function gameLoop(timeStamp) {
 
     for (const fruit of fruits) {
         fruit.update(secondsPassed);
+        // detectFruitsCollisions();
         fruit.draw();
     }
 
@@ -28,16 +29,40 @@ function gameLoop(timeStamp) {
 
 // EVENTS 
 canvas.addEventListener('click', function(e){
-    const fruit = new Fruit(context, e.offsetX, 0, 0, (9.8 * 100), getRandomFruit());
+    const position = {x: e.offsetX, y: 0}
+    const velocity = {vx: -1000, vy: 0}
+
+    const fruit = new Fruit(context, position, velocity, getRandomFruit());
     fruits.push(fruit);
 })
 
-function detectCollisions(){
-    let fruit1;
-    let fruit2;
+function distanceBetweenFruits(fruit1, fruit2){
+    let deltaX = fruit2.position.x - fruit1.position.x;
+    let deltaY = fruit2.position.y - fruit1.position.y;
+    let distance = Math.sqrt((deltaX * deltaX) + (deltaY * deltaY));
 
-    for(let i = 0; i < fruits.length; i++){
+    return distance;
+}
 
+function fruitIntersect(fruit1, fruit2) {
+    const distance = distanceBetweenFruits(fruit1, fruit2);
+    let minDistance = fruit1.radius + fruit2.radius;
+    return distance <= minDistance;
+}
+
+function detectFruitsCollisions(){
+    if(fruits.length < 2){
+        return;
+    }
+
+    for(let i = 0; i < fruits.length - 1; i++){
+
+        for(let j = i + 1; j < fruits.length; j++){
+
+            if(fruitIntersect(fruits[i], fruits[j])){
+                // tarea para la kasa xd
+            } 
+        }
     }
 }
 
