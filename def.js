@@ -1,14 +1,14 @@
 export class GameObject {
-    constructor(context, x, y, vx, vy) {
+    constructor(
+            context, 
+            position = { x: 0, y: 0 }, 
+            velocity = { vx: 0, vy: 0}, 
+            mass = 100
+    ) {
         this.context = context;
-
-        // Position
-        this.x = x;
-        this.y = y;
-
-        // Velocity
-        this.vx = vx;
-        this.vy = vy;
+        this.position = position;
+        this.mass = mass;
+        this.velocity = velocity;
 
         // Collision
         this.isColliding = false;
